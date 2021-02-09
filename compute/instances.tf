@@ -36,6 +36,42 @@ resource "aws_instance" "BastionHost" {
   }
 }
 
+resource "aws_instance" "AppServerA" {
+  ami           = data.aws_ami.linux2.id
+  instance_type = "t3.micro"
+  key_name      = aws_key_pair.myKeyPair.key_name
+  vpc_security_group_ids = [var.AppSG]
+  subnet_id     = var.appA
+
+  tags = {
+    Name = "AppServerA"
+  }
+}
+
+resource "aws_instance" "AppServerB" {
+  ami           = data.aws_ami.linux2.id
+  instance_type = "t3.micro"
+  key_name      = aws_key_pair.myKeyPair.key_name
+  vpc_security_group_ids = [var.AppSG]
+  subnet_id     = var.appB
+
+  tags = {
+    Name = "AppServerB"
+  }
+}
+
+resource "aws_instance" "AppServerC" {
+  ami           = data.aws_ami.linux2.id
+  instance_type = "t3.micro"
+  key_name      = aws_key_pair.myKeyPair.key_name
+  vpc_security_group_ids = [var.AppSG]
+  subnet_id     = var.appC
+
+  tags = {
+    Name = "AppServerC"
+  }
+}
+
 resource "local_file" "myLabKeyPairFile" {
     content     = tls_private_key.tls_connector.private_key_pem
     filename    = "myLabKeyPair.pem"

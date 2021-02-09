@@ -10,3 +10,19 @@ variable "BastionSG" {
 variable "publicSubnetA" {
     type = string
 }
+
+variable "AppSG" {
+    type = string
+}
+
+variable "appA" {
+    type = string
+}
+
+variable "appB" {
+    type = string
+}
+
+variable "appC" {
+    type = string
+}

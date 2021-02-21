@@ -6,6 +6,10 @@
 *.tfstate.*
 *.hcl
 
+
+#macOS Spotlight
+.DS_Store
+
 # Crash log files
 crash.log
 
